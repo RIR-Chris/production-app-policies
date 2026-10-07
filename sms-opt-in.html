@@ -64,6 +64,8 @@ STOP.</p>
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          // The link we email identifies the customer; without it the form falls back to matching the number.
+          token: new URLSearchParams(window.location.search).get('t') || undefined,
           slug: 'roof-it-right-llc',
           name: document.getElementById('name').value,
           phone: document.getElementById('phone').value,
